@@ -1,0 +1,30 @@
+.trafficlight {
+  background: #222;
+  background-image: linear-gradient(
+    transparent 2%,
+    #111 2%,
+    transparent 3%,
+    #111 30%
+  );
+}
+
+.red {
+  background: red;
+  border-radius: 50%;
+  border: dotted 2px red;
+  box-shadow: 0 0 4px #111 inset, 0 0 2px red;
+}
+
+.yellow {
+  background: rgb(233, 233, 0);
+  border-radius: 50%;
+  border: dotted 2px rgb(233, 233, 0);
+  box-shadow: 0 0 4px #111 inset, 0 0 2px rgb(233, 233, 0);
+}
+
+.green {
+  background: limegreen;
+  border-radius: 50%;
+  border: dotted 2px limegreen;
+  box-shadow: 0 0 4px #111 inset, 0 0 2px limegreen;
+}
