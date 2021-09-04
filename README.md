@@ -41,5 +41,3 @@ To learn React, check out the [React documentation](https://reactjs.org/).
     2. key: `WEB_CLOUDFRONT_DIST_ID`, value: `<DISTRIBUTION-ID>`
 - Optionally, set compute to the lowest spec.
 - Leave everything as is for easy configuration.
-
-After setup, every push to `master` in your github repository will trigger CI/CD.
