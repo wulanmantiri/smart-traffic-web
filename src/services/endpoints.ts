@@ -5,6 +5,7 @@ import {
   DecideTrafficLightResponse,
   DetectVehiclesRequest,
   DetectVehiclesResponse,
+  GetDashboardEmbedUrlResponse,
 } from './models';
 import { apiUrls } from './urls';
 
@@ -19,3 +20,8 @@ export const decideTrafficLightApi = (
 ): ApiResponse<DecideTrafficLightResponse> => {
   return api(apiUrls.decideTrafficLight, RequestMethod.POST, body);
 };
+
+export const getDashboardEmbedUrlApi =
+  (): ApiResponse<GetDashboardEmbedUrlResponse> => {
+    return api(apiUrls.dashboardEmbedUrl, RequestMethod.GET);
+  };

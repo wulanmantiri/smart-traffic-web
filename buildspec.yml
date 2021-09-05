@@ -2,7 +2,6 @@ version: 0.2
 phases:
   install:
     commands:
-      - yarn config set cache-folder /root/.yarn-cache
       - yarn install --production --frozen-lockfile
   build:
     commands:
@@ -18,5 +17,4 @@ artifacts:
     - "**/*"
 cache:
   paths:
-    - "/root/.yarn-cache/**/*"
     - "node_modules/**/*"

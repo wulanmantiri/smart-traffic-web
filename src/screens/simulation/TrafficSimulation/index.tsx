@@ -47,12 +47,12 @@ const TrafficSimulationPage: FC = () => {
             <>
               <p className="text-sm text-gray-500 pt-4">Green Lane History:</p>
               {data.green_lane_history.map((item, i) => (
-                <div className="flex gap-2" key={`history${i}`}>
+                <div className="flex gap-4" key={`history${i}`}>
                   {lanes.map((lane, ii) => (
                     <p
-                      className={`text-sm font-medium text-${
-                        ii === item ? 'green' : 'red'
-                      }-500`}
+                      className={`text-sm font-medium ${
+                        ii === item ? 'text-green-500' : 'text-red-500'
+                      }`}
                       key={`lanehistory${ii}`}
                     >
                       {lane.name}

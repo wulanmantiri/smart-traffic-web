@@ -1,14 +1,25 @@
+import { Loader, Navbar } from 'components/core';
+import { useApi } from 'hooks';
 import React, { FC } from 'react';
+import { getDashboardEmbedUrlApi } from 'services/endpoints';
 
 const QuicksightDashboard: FC = () => {
+  const { isLoading, data } = useApi(getDashboardEmbedUrlApi);
+
   return (
-    <div className="h-screen bg-gray-50">
-      <iframe
-        src={process.env.REACT_APP_QUICKSIGHT_EMBED_URL}
-        width="700"
-        height="500"
-      />
-    </div>
+    <>
+      <Navbar />
+      <div className="pt-12 h-screen">
+        {isLoading ? (
+          <div className="flex flex-col justify-center items-center h-full gap-4">
+            <Loader color="gray-500" />
+            <p className="text-sm text-gray-500">Loading from Quicksight</p>
+          </div>
+        ) : (
+          <iframe src={data?.embed_url} width="100%" height="100%" />
+        )}
+      </div>
+    </>
   );
 };
 

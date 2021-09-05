@@ -28,6 +28,6 @@ export const navbarItems = [
   },
   {
     path: ROUTES.quicksightDashboard,
-    label: 'Analytics',
+    label: 'Analytics Dashboard',
   },
 ];
