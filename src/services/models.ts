@@ -27,11 +27,15 @@ export interface TrafficLightConfig {
 export interface DecideTrafficLightRequest {
   lanes: {
     name: string;
-    count: number;
+    car_count: number;
+    motorbike_count: number;
+    truck_count: number;
+    bus_count: number;
+    total_count: number;
     time: string;
     intersection_id: string;
   }[];
-  green_lane_history: number[];
+  history: number[];
   config: TrafficLightConfig;
 }
 
@@ -42,7 +46,7 @@ export interface DecideTrafficLightResponse {
     calc_time: number;
     actual_time_details: string;
   };
-  green_lane_history: number[];
+  history: number[];
 }
 
 export interface GetDashboardEmbedUrlResponse {

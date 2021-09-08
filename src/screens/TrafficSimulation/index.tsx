@@ -15,7 +15,8 @@ const TrafficSimulationPage: FC = () => {
   const [lanes, setLanes] = useState<LaneDetails[]>([]);
 
   const decideTrafficLight = async (config: TrafficLightConfig) => {
-    if (!intersectionId) setIntersectionId(uuidv4());
+    const id = intersectionId || uuidv4();
+    if (!intersectionId) setIntersectionId(id);
 
     const now = new Date().toJSON();
     const count = await Promise.all(lanes.map(lane => lane.detectCallback()));
@@ -23,11 +24,15 @@ const TrafficSimulationPage: FC = () => {
     const response = await decideTrafficLightApi({
       lanes: lanes.map((item, i) => ({
         name: item.name,
-        count: count[i],
         time: now,
-        intersection_id: intersectionId || '',
+        intersection_id: id,
+        car_count: count[i].car,
+        bus_count: count[i].bus,
+        motorbike_count: count[i].motorbike,
+        truck_count: count[i].truck,
+        total_count: count[i].total,
       })),
-      green_lane_history: data?.green_lane_history || [],
+      history: data ? [data.green.lane, ...data.history] : [],
       config,
     });
     if (response.data) {
@@ -45,8 +50,8 @@ const TrafficSimulationPage: FC = () => {
           </p>
           {data ? (
             <>
-              <p className="text-sm text-gray-500 pt-4">Green Lane History:</p>
-              {data.green_lane_history.map((item, i) => (
+              <p className="text-sm text-gray-500 pt-4">History:</p>
+              {data.history.map((item, i) => (
                 <div className="flex gap-4" key={`history${i}`}>
                   {lanes.map((lane, ii) => (
                     <p

@@ -11,6 +11,7 @@ import AddTrafficLaneModal from '../AddTrafficLaneModal';
 import TrafficLight from '../TrafficLight';
 import { initialLaneValues } from '../schema';
 import { LaneFormValues, TrafficLaneBoxProps } from './types';
+import { VehicleCount } from 'services/models';
 
 const TrafficLaneBox: FC<TrafficLaneBoxProps> = ({ data, lanes, setLanes }) => {
   const [laneId, setLaneId] = useState<number | null>(null);
@@ -37,7 +38,7 @@ const TrafficLaneBox: FC<TrafficLaneBoxProps> = ({ data, lanes, setLanes }) => {
     return imageBase64;
   };
 
-  const getVehicleCount = async (): Promise<number> => {
+  const getVehicleCount = async (): Promise<VehicleCount> => {
     const imageBase64 = captureSnapshot();
     drawOnCanvas(imageBase64);
     setVehicleCount(null);
@@ -49,10 +50,17 @@ const TrafficLaneBox: FC<TrafficLaneBoxProps> = ({ data, lanes, setLanes }) => {
 
     if (response.data) {
       drawOnCanvas(response.data.image);
+      setVehicleCount(response.data.count.total);
+      return response.data.count;
     }
-    const totalVehicles = response.data?.count.total || 0;
-    setVehicleCount(totalVehicles);
-    return totalVehicles;
+    setVehicleCount(0);
+    return {
+      car: 0,
+      motorbike: 0,
+      truck: 0,
+      bus: 0,
+      total: 0,
+    };
   };
 
   const onAdd = (value: LaneFormValues) => {

@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { DecideTrafficLightResponse } from 'services/models';
+import { DecideTrafficLightResponse, VehicleCount } from 'services/models';
 
 export interface LaneFormValues {
   name: string;
@@ -7,7 +7,7 @@ export interface LaneFormValues {
 }
 
 export interface LaneDetails extends LaneFormValues {
-  detectCallback: () => Promise<number>;
+  detectCallback: () => Promise<VehicleCount>;
 }
 
 export interface TrafficLaneBoxProps {
