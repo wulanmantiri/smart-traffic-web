@@ -1,5 +1,6 @@
 export const ROUTES = {
-  trafficSimulation: '/',
+  about: '/',
+  trafficSimulation: '/traffic-simulation',
   vehicleDetection: '/vehicle-detection',
   quicksightDashboard: '/analytics-dashboard',
 };

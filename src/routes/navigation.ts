@@ -4,6 +4,10 @@ import * as SCREENS from 'screens';
 export const navigation = [
   {
     exact: true,
+    path: ROUTES.about,
+    component: SCREENS.About,
+  },
+  {
     path: ROUTES.trafficSimulation,
     component: SCREENS.TrafficSimulation,
   },

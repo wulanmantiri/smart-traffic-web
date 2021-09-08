@@ -6,10 +6,12 @@ const Navbar: FC = () => (
   <nav className="bg-squid fixed w-screen">
     <div className="flex items-center h-12 px-4 sm:px-12">
       <div className="relative flex flex-1 items-center justify-between">
-        <div className="flex flex-col items-center">
-          <p className="text-white text-sm">Smart Traffic</p>
-          <p className="text-gray-300 text-xs">Management System</p>
-        </div>
+        <Link to="/">
+          <div className="flex flex-col items-center">
+            <p className="text-white text-sm">Smart Traffic</p>
+            <p className="text-gray-300 text-xs">Management System</p>
+          </div>
+        </Link>
         <div className="flex space-x-4">
           {navbarItems.map(nav => (
             <Link
