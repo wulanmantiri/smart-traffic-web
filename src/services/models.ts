@@ -44,3 +44,8 @@ export interface DecideTrafficLightResponse {
   };
   green_lane_history: number[];
 }
+
+export interface GetDashboardEmbedUrlResponse {
+  embed_url: string;
+  request_id: string;
+}

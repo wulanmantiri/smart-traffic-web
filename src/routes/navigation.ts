@@ -11,6 +11,10 @@ export const navigation = [
     path: ROUTES.vehicleDetection,
     component: SCREENS.VehicleDetection,
   },
+  {
+    path: ROUTES.quicksightDashboard,
+    component: SCREENS.QuicksightDashboard,
+  },
 ];
 
 export const navbarItems = [
@@ -21,5 +25,9 @@ export const navbarItems = [
   {
     path: ROUTES.vehicleDetection,
     label: 'Vehicle Detection',
+  },
+  {
+    path: ROUTES.quicksightDashboard,
+    label: 'Analytics Dashboard',
   },
 ];
