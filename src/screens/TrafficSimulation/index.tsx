@@ -6,8 +6,8 @@ import {
   TrafficLightConfig,
 } from 'services/models';
 import { v4 as uuidv4 } from 'uuid';
-import { TrafficLaneBox, TopRightBox } from '../components';
-import { LaneDetails } from '../components/TrafficLaneBox/types';
+import { TrafficLaneBox, TopRightBox } from './components';
+import { LaneDetails } from './components/TrafficLaneBox/types';
 
 const TrafficSimulationPage: FC = () => {
   const [intersectionId, setIntersectionId] = useState<string | null>(null);
