@@ -71,8 +71,8 @@ const About: FC = () => (
             recently gets a green light turn after road B. The probability of
             road A getting another green light will be the smallest, having only
             1/4 = 25% chance. Road B will get 50% chance (having the second most
-            recent green turn), while road C will get 75% chance. No lanes will
-            get 0% or 100% chance.
+            recent green turn), while road C will get 75% chance. Initially,
+            every road will get 100% probability.
           </p>
         </InfoCard>
 

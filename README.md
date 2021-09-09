@@ -1,4 +1,4 @@
-# Smart Traffic Management System (STMS) Web
+# Smart Traffic Lights (STL) Web
 
 ## Getting Started
 

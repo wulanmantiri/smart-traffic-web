@@ -14,6 +14,7 @@ const TrafficSimulationPage: FC = () => {
   const [data, setData] = useState<DecideTrafficLightResponse | null>(null);
   const [lanes, setLanes] = useState<LaneDetails[]>([]);
 
+  console.log(data?.history);
   const decideTrafficLight = async (config: TrafficLightConfig) => {
     const id = intersectionId || uuidv4();
     if (!intersectionId) setIntersectionId(id);
@@ -32,7 +33,12 @@ const TrafficSimulationPage: FC = () => {
         truck_count: count[i].truck,
         total_count: count[i].total,
       })),
-      history: data ? [data.green.lane, ...data.history] : [],
+      history: data
+        ? [
+            data.green.lane,
+            ...data.history.filter(item => item !== data.green.lane),
+          ]
+        : [],
       config,
     });
     if (response.data) {
@@ -51,20 +57,24 @@ const TrafficSimulationPage: FC = () => {
           {data ? (
             <>
               <p className="text-sm text-gray-500 pt-4">History:</p>
-              {data.history.map((item, i) => (
-                <div className="flex gap-4" key={`history${i}`}>
-                  {lanes.map((lane, ii) => (
-                    <p
-                      className={`text-sm font-medium ${
-                        ii === item ? 'text-green-500' : 'text-red-500'
-                      }`}
-                      key={`lanehistory${ii}`}
-                    >
-                      {lane.name}
-                    </p>
-                  ))}
-                </div>
-              ))}
+              {data.history.length > 0 ? (
+                data.history.map((item, i) => (
+                  <div className="flex gap-4" key={`history${i}`}>
+                    {lanes.map((lane, ii) => (
+                      <p
+                        className={`text-sm font-medium ${
+                          ii === item ? 'text-green-500' : 'text-red-500'
+                        }`}
+                        key={`lanehistory${ii}`}
+                      >
+                        {lane.name}
+                      </p>
+                    ))}
+                  </div>
+                ))
+              ) : (
+                <p className="text-sm">-</p>
+              )}
             </>
           ) : null}
         </div>
