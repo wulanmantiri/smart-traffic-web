@@ -8,8 +8,8 @@ const Navbar: FC = () => (
       <div className="relative flex flex-1 items-center justify-between">
         <Link to="/">
           <div className="flex flex-col items-center">
-            <p className="text-white text-sm">Smart Traffic</p>
-            <p className="text-gray-300 text-xs">Management System</p>
+            <p className="text-white text-sm">Smart Traffic Lights</p>
+            <p className="text-gray-300 text-xs">(Web Version)</p>
           </div>
         </Link>
         <div className="flex space-x-4">

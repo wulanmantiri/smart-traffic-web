@@ -18,13 +18,12 @@ const About: FC = () => (
       </div>
 
       <h1 className="text-5xl lg:text-6xl font-medium text-gray-700 text-center">
-        Smart Traffic Management System
+        Smart Traffic Lights (STL) Web
       </h1>
 
       <p className="mt-8 text-xl text-gray-500 w-4/6 text-center tracking-wide">
         A one-stop application to provide simulations on automated density-based
-        traffic light signals and analytics dashboard on the traffic flow in an
-        area.
+        traffic light signals and analytics dashboard on the traffic flow.
       </p>
 
       <div className="mt-8 flex gap-4">
@@ -104,8 +103,39 @@ const About: FC = () => (
           </p>
         </InfoCard>
 
-        <InfoCard title="Monitoring">
-          <p>Coming Soon</p>
+        <InfoCard title="Data Visualization">
+          <div>
+            <p>
+              Every time the algorithm makes a traffic light decision, it will
+              store <span className="text-primary font-medium">data logs </span>
+              from each traffic lane consisting of
+            </p>
+            <ul className="list-inside list-disc">
+              <li>lane or road name,</li>
+              <li>intersection ID,</li>
+              <li>current time, and</li>
+              <li>the number of detected vehicles.</li>
+            </ul>
+          </div>
+          <p>
+            <span className="text-primary font-medium">Data logs </span> are
+            transferred to a Lambda function that directly puts it in a Kinesis
+            Firehose delivery stream into a S3 bucket destination.
+          </p>
+
+          <div>
+            <p>
+              <span className="text-primary font-medium">Analysis: </span> The
+              dataset were then imported from S3 to QuickSight that creates a
+              dashboard on
+            </p>
+            <ul className="list-inside list-disc">
+              <li>total intersections in the system,</li>
+              <li>average vehicles per day,</li>
+              <li>number of vehicles per road,</li>
+              <li>vehicle trends per intersection, etc.</li>
+            </ul>
+          </div>
         </InfoCard>
       </div>
     </div>
@@ -133,7 +163,7 @@ const About: FC = () => (
             API
           </HrefLink>
           <p>•</p>
-          <HrefLink href="https://github.com/wulanmantiri/smart-traffic-api">
+          <HrefLink href="https://github.com/wulanmantiri/smart-traffic-notebook/blob/master/index.ipynb">
             Jupyter Notebook
           </HrefLink>
         </div>
@@ -141,7 +171,12 @@ const About: FC = () => (
     </div>
 
     <div className="bg-squid flex justify-between p-2 sm:px-6 text-sm text-gray-200">
-      <p>Wulan Mantiri • September 2021</p>
+      <div className="flex gap-1">
+        <a href="https://www.linkedin.com/in/wulanmantiri/" target="_blank">
+          Wulan Mantiri
+        </a>
+        <p>• September 2021</p>
+      </div>
       <p>ASEAN Public Sector • AWS Solutions Architecture</p>
     </div>
   </div>
