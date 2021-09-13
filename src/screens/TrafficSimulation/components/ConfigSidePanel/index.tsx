@@ -1,5 +1,6 @@
 import { Button, SidePanel } from 'components/core';
-import { TextField } from 'components/form';
+import { RadioButton, TextField } from 'components/form';
+import { enableOptions } from 'constants/options';
 import { useFormik } from 'formik';
 import React, { FC } from 'react';
 import { configFormFields, initialConfig } from '../schema';
@@ -10,7 +11,7 @@ const ConfigSidePanel: FC<ConfigSidePanelProps> = ({
   setPanelOpen,
   onSubmit,
 }) => {
-  const { getFieldProps, handleSubmit } = useFormik({
+  const { getFieldProps, setFieldValue, handleSubmit } = useFormik({
     initialValues: { ...initialConfig },
     onSubmit,
   });
@@ -27,13 +28,13 @@ const ConfigSidePanel: FC<ConfigSidePanelProps> = ({
             Traffic Light Configuration
           </h2>
           <p className="text-sm text-gray-500">
-            Any changes will take effect on the next simulation.
+            Any changes will take effect on the next snapshot capture.
           </p>
         </div>
 
         <div className="grid gap-6 py-6 px-4">
           {configFormFields.map(field => (
-            <div className="space-y-2" key={field.title}>
+            <div className="space-y-3" key={field.title}>
               <p className="text-sm font-medium text-gray-500">{field.title}</p>
               <div className="grid grid-cols-2 gap-2">
                 {field.items.map(item => (
@@ -47,6 +48,15 @@ const ConfigSidePanel: FC<ConfigSidePanelProps> = ({
               </div>
             </div>
           ))}
+          <div className="space-y-3">
+            <p className="text-sm font-medium text-gray-500">Logging</p>
+            <RadioButton
+              label="Enable traffic flow logs"
+              options={enableOptions}
+              {...getFieldProps('enable_stream')}
+              setValue={v => setFieldValue('enable_stream', v)}
+            />
+          </div>
         </div>
 
         <div className="px-4 flex justify-end">

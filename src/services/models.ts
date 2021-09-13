@@ -1,6 +1,9 @@
 export interface DetectVehiclesRequest {
   image: string;
   return_bbox_image: boolean;
+  prioritize_quantity?: boolean;
+  confidence?: number;
+  nms_threshold?: number;
 }
 
 export interface VehicleCount {

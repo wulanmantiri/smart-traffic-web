@@ -12,7 +12,7 @@ export interface TrafficLightFormConfig {
   ratio_time: string;
   min_green_time: string;
   max_green_time: string;
-  enable_stream: boolean;
+  enable_stream: string;
 }
 
 export const initialConfig: TrafficLightFormConfig = {
@@ -21,7 +21,7 @@ export const initialConfig: TrafficLightFormConfig = {
   max_green_time: '60',
   ratio_vehicle: '1',
   ratio_time: '1',
-  enable_stream: true,
+  enable_stream: 'enabled',
 };
 
 export const configFormFields = [
@@ -74,5 +74,5 @@ export const convertConfigPayload = (
   ratio_vehicle: parseInt(config.ratio_vehicle, 10),
   max_green_time: parseInt(config.max_green_time, 10),
   min_green_time: parseInt(config.min_green_time, 10),
-  enable_stream: config.enable_stream,
+  enable_stream: config.enable_stream === 'enabled',
 });

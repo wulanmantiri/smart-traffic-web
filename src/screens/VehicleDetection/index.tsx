@@ -1,14 +1,16 @@
 import React, { FC, useState } from 'react';
 import { Loader, DataDisplay, Navbar } from 'components/core';
-import { FileUpload } from 'components/form';
+import { FileUpload, RadioButton } from 'components/form';
 import { detectVehiclesApi } from 'services/endpoints';
 import { convertBase64toBlob, convertBlobToBase64 } from 'utils/image';
 import { getVehicleCount } from './schema';
+import { prioritizeQuantityOptions } from 'constants/options';
 
 const VehicleDetectionPage: FC = () => {
   const [imageBlob, setImageBlob] = useState<Blob | null>(null);
   const [vehicleCount, setVehicleCount] = useState(getVehicleCount());
   const [isLoading, setIsLoading] = useState(false);
+  const [priority, setPriority] = useState('speed');
 
   const onFileDrop = async (file: Blob) => {
     setImageBlob(file);
@@ -18,6 +20,7 @@ const VehicleDetectionPage: FC = () => {
     const response = await detectVehiclesApi({
       image: imageBase64,
       return_bbox_image: true,
+      prioritize_quantity: priority === 'quantity',
     });
 
     if (response.data) {
@@ -52,8 +55,18 @@ const VehicleDetectionPage: FC = () => {
               <p className="text-gray-500 text-sm">No processed image</p>
             )}
           </div>
-          <div className="flex flex-col gap-6 justify-between w-1/5">
+          <div className="flex flex-col gap-6 justify-between">
             <DataDisplay items={vehicleCount} title="Vehicle Count" />
+            <div className="bg-white shadow rounded-md px-4 py-2">
+              <RadioButton
+                label="Priority"
+                sublabel="for file size > 1 MB only"
+                options={prioritizeQuantityOptions}
+                name="priority"
+                value={priority}
+                setValue={setPriority}
+              />
+            </div>
             <FileUpload onFileDrop={onFileDrop} />
           </div>
         </div>

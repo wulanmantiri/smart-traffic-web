@@ -28,7 +28,7 @@ const FileUpload: FC<FileUploadProps> = ({ onFileDrop }) => {
           Upload an image
         </div>
         <p className="text-sm text-gray-600">or drag and drop</p>
-        <p className="text-xs text-gray-400">PNG, JPG up to 10MB</p>
+        <p className="text-xs text-gray-400">PNG, JPG up to 5MB</p>
       </div>
     </div>
   );
