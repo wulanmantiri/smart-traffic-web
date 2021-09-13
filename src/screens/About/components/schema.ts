@@ -8,27 +8,12 @@ export const technologies = [
   'YOLOv4 model',
   'Docker',
   'Git',
-];
-
-export const awsTechnologies = [
-  'SageMaker',
-  'Rekognition',
-  'Elastic Container Registry (ECR)',
-  'Lambda',
-  'API Gateway',
-  'Serverless Application Model (SAM)',
-  'CloudFormation',
-  'Kinesis Firehose',
-  'QuickSight',
-  'S3',
-  'CloudFront',
-  'Identity and Access Management (IAM)',
-  'CodeBuild',
+  'AWS',
 ];
 
 export const roadmaps = [
   'ML Model Research',
-  'ML Inference on Container Image',
+  'ML Inference with Container on Lambda',
   'Serverless API',
   'Serverless API CI/CD',
   'Data Analytics',

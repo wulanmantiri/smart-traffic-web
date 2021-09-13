@@ -1,9 +1,11 @@
+import architectureDiagram from 'assets/architecture_diagram.png';
 import { Navbar } from 'components/core';
 import { ROUTES } from 'constants/routes';
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
+
 import { bigLinkStyles, HrefLink, InfoCard } from './components';
-import { roadmaps } from './components/schema';
+import { roadmaps, technologies } from './components/schema';
 
 const About: FC = () => (
   <div>
@@ -43,7 +45,7 @@ const About: FC = () => (
       </div>
     </div>
 
-    <div className="bg-gray-50 flex flex-col items-center py-20">
+    <div className="bg-gray-50 flex flex-col items-center py-16">
       <div className="grid grid-cols-3 px-12 w-full gap-10">
         <InfoCard title="Decision-making Algorithm">
           <p>
@@ -140,32 +142,45 @@ const About: FC = () => (
       </div>
     </div>
 
-    <div className="grid grid-cols-5 gap-6 py-20">
-      <div className="col-span-3"></div>
+    <div className="grid grid-cols-5 p-12">
+      <div className="col-span-3">
+        <img src={architectureDiagram} />
+      </div>
 
-      <div className="space-y-6 col-span-2">
-        <p className="text-2xl tracking-wide font-medium text-primary-100">
-          Infrastructure as Code
-        </p>
-        <ul className="list-inside list-disc text-gray-800 text-lg">
-          {roadmaps.map(item => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
+      <div className="col-span-2 flex flex-col justify-center ml-16">
+        <div className="space-y-6">
+          <p className="text-2xl tracking-wide font-medium text-primary-100">
+            Infrastructure as Code
+          </p>
+          <ul className="list-inside list-disc text-gray-800 text-lg">
+            {roadmaps.map(item => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
 
-        <div className="flex gap-2">
-          <p>GitHub: </p>
-          <HrefLink href="https://github.com/wulanmantiri/smart-traffic-web">
-            Web
-          </HrefLink>
-          <p>•</p>
-          <HrefLink href="https://github.com/wulanmantiri/smart-traffic-api">
-            API
-          </HrefLink>
-          <p>•</p>
-          <HrefLink href="https://github.com/wulanmantiri/smart-traffic-notebook/blob/master/index.ipynb">
-            Jupyter Notebook
-          </HrefLink>
+          <div className="space-y-1">
+            <p className="text-gray-600 font-medium">Technologies Used:</p>
+            <div className="text-gray-600 flex flex-wrap gap-1">
+              {technologies.map(item => (
+                <p key={item}>{item} •</p>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex gap-2">
+            <p>GitHub: </p>
+            <HrefLink href="https://github.com/wulanmantiri/smart-traffic-web">
+              Web
+            </HrefLink>
+            <p>•</p>
+            <HrefLink href="https://github.com/wulanmantiri/smart-traffic-api">
+              API
+            </HrefLink>
+            <p>•</p>
+            <HrefLink href="https://github.com/wulanmantiri/smart-traffic-notebook/blob/master/index.ipynb">
+              Jupyter Notebook
+            </HrefLink>
+          </div>
         </div>
       </div>
     </div>

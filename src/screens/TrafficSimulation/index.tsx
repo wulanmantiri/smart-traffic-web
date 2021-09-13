@@ -14,7 +14,6 @@ const TrafficSimulationPage: FC = () => {
   const [data, setData] = useState<DecideTrafficLightResponse | null>(null);
   const [lanes, setLanes] = useState<LaneDetails[]>([]);
 
-  console.log(data?.history);
   const decideTrafficLight = async (config: TrafficLightConfig) => {
     const id = intersectionId || uuidv4();
     if (!intersectionId) setIntersectionId(id);
