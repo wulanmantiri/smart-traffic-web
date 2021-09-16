@@ -36,7 +36,7 @@ const About: FC = () => (
           Simulate Traffic
         </Link>
         <a
-          href="https://github.com/wulanmantiri/smart-traffic-api"
+          href="https://youtu.be/LCd_MisLCvY"
           target="_blank"
           className={`${bigLinkStyles} text-gray-200 bg-squid hover:text-white`}
         >

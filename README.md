@@ -15,7 +15,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ### Instructions
 - You will need an AWS account.
-- Setup [STMS API](https://github.com/wulanmantiri/smart-traffic-api) and modify the API endpoint (from Lambda application) in `.env.production`.
+- Setup [STL API](https://github.com/wulanmantiri/smart-traffic-api) and modify the API endpoint (from Lambda application) in `.env.production`.
 - Setup AWS services by following the guidelines below.
 - After setup, every push to `master` in your github repository will trigger CI/CD.
 
