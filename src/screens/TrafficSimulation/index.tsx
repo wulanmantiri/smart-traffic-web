@@ -38,6 +38,7 @@ const TrafficSimulationPage: FC = () => {
             ...data.history.filter(item => item !== data.green.lane),
           ]
         : [],
+      consecutive_red_turns: data?.consecutive_red_turns,
       config,
     });
     if (response.data) {

@@ -39,6 +39,7 @@ export interface DecideTrafficLightRequest {
     intersection_id: string;
   }[];
   history: number[];
+  consecutive_red_turns?: number[];
   config: TrafficLightConfig;
 }
 
@@ -50,6 +51,7 @@ export interface DecideTrafficLightResponse {
     actual_time_details: string;
   };
   history: number[];
+  consecutive_red_turns: number[];
 }
 
 export interface GetDashboardEmbedUrlResponse {
