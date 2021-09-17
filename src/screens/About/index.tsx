@@ -59,7 +59,7 @@ const About: FC = () => (
               <li>
                 probability of getting a green light based on history, and
               </li>
-              <li>the number of detected vehicles queueing in that lane.</li>
+              <li>the number of detected vehicles.</li>
             </ul>
           </div>
           <p>
@@ -70,10 +70,17 @@ const About: FC = () => (
           <p className="text-sm">
             For example, in an intersection consisting road A, B, and C, road A
             recently gets a green light turn after road B. The probability of
-            road A getting another green light will be the smallest, having only
-            1/4 = 25% chance. Road B will get 50% chance (having the second most
-            recent green turn), while road C will get 75% chance. Initially,
-            every road will get 100% probability.
+            road A will be the smallest (25%), followed by Road B (50%), and so
+            on. Initially, each lane will get 100% probability.
+          </p>
+          <p className="text-sm">
+            <span className="text-primary font-medium">
+              Prioritized lanes:{' '}
+            </span>
+            If there are lanes that get more than X red lights in a row and have
+            at least 1 queueing vehicle, those lanes will be prioritized,
+            leaving the rest with 0% probability. The threshold X is set to be
+            the number of lanes in the intersection.
           </p>
         </InfoCard>
 
